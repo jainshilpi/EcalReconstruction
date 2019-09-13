@@ -51,7 +51,7 @@ class TagValidation:
         fdir = self._options.printDir if hasattr(self._options,"printDir") else "./"
         if not os.path.exists(fdir):
             os.makedirs(fdir);
-        if os.path.exists("/afs/cern.ch"): os.system("cp /afs/cern.ch/user/g/gpetrucc/php/index.php "+fdir)
+#        if os.path.exists("/afs/cern.ch"): os.system("cp /afs/cern.ch/user/g/gpetrucc/php/index.php "+fdir)
         canvas.cd()
         if "TGraph" in plot.ClassName():
             canvas.SetLeftMargin(0.20)
@@ -137,7 +137,8 @@ class TagValidation:
                 hminus = hplus.Clone('%s_minus_diff_2d_sample%d' % (part,s))
                 histos['eeminus'].append(hminus)
 
-        detids = EcalDetId('/afs/cern.ch/work/e/emanuele/public/ecal/pulseshapes_db/detids_ECAL.txt')
+        #detids = EcalDetId('/afs/cern.ch/work/e/emanuele/public/ecal/pulseshapes_db/detids_ECAL.txt')
+        detids = EcalDetId('detids_ECAL.txt')
 
         for (partition,detid),samples in refData.iteritems():
             key = (partition,detid)
@@ -199,7 +200,8 @@ class TagValidation:
             histos.append(hminus)
             histosDiff.append(hminus.Clone(('%sminus_time_diff' % part)))
 
-        detids = EcalDetId('/afs/cern.ch/work/e/emanuele/public/ecal/pulseshapes_db/detids_ECAL.txt')
+        #detids = EcalDetId('/afs/cern.ch/work/e/emanuele/public/ecal/pulseshapes_db/detids_ECAL.txt')
+        detids = EcalDetId('detids_ECAL.txt')
 
         # load the current time ICs (dump of the tag)
         self.timeICs = self.loadTimeICs(currentTimeIC)
@@ -302,7 +304,8 @@ class TagValidation:
                 hz.append(hminus)
                 histos[par] = hz
 
-        detids = EcalDetId('/afs/cern.ch/work/e/emanuele/public/ecal/pulseshapes_db/detids_ECAL.txt')
+        #detids = EcalDetId('/afs/cern.ch/work/e/emanuele/public/ecal/pulseshapes_db/detids_ECAL.txt')
+        detids = EcalDetId('detids_ECAL.txt')
 
         cryfit = 0
         for (partition,detid),samples in newData.iteritems():
@@ -460,7 +463,8 @@ if __name__ == "__main__":
         else: 
             tv.do1dComparison(doEB)
 
-    currentTimeICs = '/afs/cern.ch/work/e/emanuele/public/ecal/timeICs_dump_EcalTimeCalibConstants__since_00253984_till_Run2016A.txt'
+    #currentTimeICs = '/afs/cern.ch/work/e/emanuele/public/ecal/timeICs_dump_EcalTimeCalibConstants__since_00253984_till_Run2016A.txt'
+    currentTimeICs = 'timeICs_dump_EcalTimeCalibConstants__since_00253984_till_Run2016A.txt'
     if options.do2Dtime:
         # values in the GT 80X_dataRun2_Prompt_v8
         tv.setTimeOffset(-0.964168,0.347665)
