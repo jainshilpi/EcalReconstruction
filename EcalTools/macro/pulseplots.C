@@ -8,7 +8,7 @@ void pulseplots::Loop()
 {
   
   TFile *f = new TFile("/net/data_cms/cmspos/ECAL/AlCaPhiSym_Run2018D-v1_runs323841_324022_62.root");
-  TDirectory * dir = (TDirectory*)f->Get("net/data_cms/cmspos/ECAL/AlCaPhiSym_Run2018D-v1_runs323841_324022_62.root:/pulseDump");
+  TDirectory * dir = (TDirectory*)f->Get("/net/data_cms/cmspos/ECAL/AlCaPhiSym_Run2018D-v1_runs323841_324022_62.root:/pulseDump");
   TTree *tree = new TTree();
   dir->GetObject("pulse_tree",tree);   
   Init(tree);
