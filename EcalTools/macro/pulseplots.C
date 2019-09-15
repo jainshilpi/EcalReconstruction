@@ -6,6 +6,13 @@
 
 void pulseplots::Loop()
 {
+  
+  TFile *f = new TFile("/net/data_cms/cmspos/ECAL/runs323841_324022/AlCaPhiSym_Run2018D-v1_runs323841_324022_62.root");
+  TDirectory * dir = (TDirectory*)f->Get("net/data_cms/cmspos/ECAL/runs323841_324022/AlCaPhiSym_Run2018D-v1_runs323841_324022_62.root:/pulseDump");
+  TTree *tree = new TTree();
+  dir->GetObject("pulse_tree",tree);   
+  Init(tree);
+  
    if (fChain == 0) return;
 
    Long64_t nentries = fChain->GetEntriesFast();

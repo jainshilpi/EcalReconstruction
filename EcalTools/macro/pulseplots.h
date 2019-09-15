@@ -73,6 +73,8 @@ public :
 #ifdef pulseplots_cxx
 pulseplots::pulseplots(TTree *tree) : fChain(0) 
 {
+
+  /*
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
@@ -86,6 +88,7 @@ pulseplots::pulseplots(TTree *tree) : fChain(0)
 
    }
    Init(tree);
+  */
 }
 
 pulseplots::~pulseplots()
